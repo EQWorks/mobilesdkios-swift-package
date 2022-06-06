@@ -1,0 +1,80 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target x86_64-apple-ios13.1-macabi -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name mobilesdkios
+import CoreData
+import Foundation
+import Network
+import Swift
+import UIKit
+import _Concurrency
+@_exported import mobilesdkios
+public struct LocationC : Swift.Codable {
+  public init(lat: Swift.Double?, long: Swift.Double?)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct BeaconTag : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @available(iOS 12.0, *)
+public class EQLibrary {
+  public static var debugLogEnabled: Swift.Bool {
+    get
+    set
+  }
+  public class func shared() -> mobilesdkios.EQLibrary
+  public func setQueueSize(size: Swift.Int) -> Swift.Bool
+  public func getQueueSize() -> Swift.Int
+  public func setJwtToken(token: Swift.String)
+  public func getJwtToken() -> Swift.String?
+  public func logUser(appUserId: Swift.String, attributes: Swift.String? = nil, location: mobilesdkios.LocationC? = nil)
+  public func logUser(appUserId: Swift.String)
+  public func logUser(appUserId: Swift.String, attributes: Swift.String? = nil)
+  public func logUser(appUserId: Swift.String, location: mobilesdkios.LocationC? = nil)
+  public func logEvent(name: Swift.String, properties: Swift.String? = nil, location: mobilesdkios.LocationC? = nil)
+  public func logEvent(name: Swift.String)
+  public func logEvent(name: Swift.String, properties: Swift.String? = nil)
+  public func logEvent(name: Swift.String, location: mobilesdkios.LocationC? = nil)
+  public func getBeacon(beaconId: Swift.Int, completion: @escaping (mobilesdkios.BeaconTag?, Swift.Error?) -> Swift.Void)
+  public func fireBeacon(beacon: mobilesdkios.BeaconTag, location: mobilesdkios.LocationC?, completion: @escaping (Swift.Bool?, Swift.Error?) -> Swift.Void)
+  public func getBeacons(campId: Swift.Int, completion: @escaping ([mobilesdkios.BeaconTag]?, Swift.Error?) -> Swift.Void)
+  public func getBeacons(completion: @escaping ([mobilesdkios.BeaconTag]?, Swift.Error?) -> Swift.Void)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(EventItem) public class EventItem : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+extension mobilesdkios.EventItem {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<mobilesdkios.EventItem>
+  @objc @NSManaged dynamic public var payload: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var payload_type: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+extension mobilesdkios.EventItem : Swift.Identifiable {
+  public typealias ID = Swift.ObjectIdentifier
+}
+@_inheritsConvenienceInitializers @objc(RetryItem) public class RetryItem : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+extension mobilesdkios.RetryItem {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<mobilesdkios.RetryItem>
+  @objc @NSManaged dynamic public var no_of_attempt: Swift.Int16 {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var payload: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+extension mobilesdkios.RetryItem : Swift.Identifiable {
+  public typealias ID = Swift.ObjectIdentifier
+}

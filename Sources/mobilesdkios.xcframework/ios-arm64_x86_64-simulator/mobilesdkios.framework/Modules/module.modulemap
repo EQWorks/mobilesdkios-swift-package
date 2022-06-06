@@ -1,0 +1,11 @@
+framework module mobilesdkios {
+  umbrella header "mobilesdkios.h"
+
+  export *
+  module * { export * }
+}
+
+module mobilesdkios.Swift {
+    header "mobilesdkios-Swift.h"
+    requires objc
+}
