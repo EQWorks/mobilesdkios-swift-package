@@ -1,3 +1,3 @@
 # mobilesdkios-swift-package
 
-A description of this package.
+Please check - https://github.com/EQWorks/mobileSDK-documentation to incorporate this package.
